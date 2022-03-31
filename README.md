@@ -1,18 +1,12 @@
 
-# TLC303 tutorial
 
-Welcome to TLC303 !
 
-Before we get started , make sure your wifi is working properly.
-
-You would need to work in teams of 3 , find yourself two people who are sitting next to you , those will be your partners for this session. In order to build the data mesh architecture which we will then use as a foundation for telcolake use cases , you need to have 3 AWS accounts , which we will provide. Based on your seating order , the leftmost person will own the Producer account , the one sitting in the middle will own the Central data mesh account , and the person on the right will own the consumer account.
-
-# TLC303 Part 1 - Telco Data Mesh Tutorial
+# Part 1 - Telco Data Mesh Creation Tutorial
 
 
 Producer → Data Mesh(Central) → Consumer
 
-After we finish the part of building a data mesh architecture , most of the focus will be on building 3 different telco use cases , leveraging the different datasets. hence, when you get to the use cases part, you can work together on the consumer account as a team.
+After we finish the part of building a data mesh architecture , most of the focus will be on building Churn use case , leveraging the different datasets. hence, when you get to the use cases part, you can work together on the consumer account.
 
 The AWS Data Mesh Helper library provides automation around the most common tasks that customers need to perform to implement a data mesh architecture on AWS. A data mesh on AWS uses a central AWS Account (the mesh account) to store the metadata associated with **Data Products** created by data **Producers**. This allows other AWS Accounts to act as **Consumers** , and to request **Subscriptions** , which must be approved by **Producers**. Upon approval, the approved grants are provided to the **Consumer** and can be used within their AWS Account.
 
@@ -40,49 +34,26 @@ In this architecture, we can see that the data mesh is configured in AWS Account
 - DataMeshAdminReadOnly: IAM Role that can be used for reading Metadata from the Data Mesh Account (only)
 
 
-## Getting started with Event Engine
 
 
 
-1. Open your web browser and enter the following URL : [https://dashboard.eventengine.run/login](https://dashboard.eventengine.run/login)
-
-![](https://github.com/gubaruch/TLC303_reinvent2021/blob/main/doc/image(4).png)
+1. Click on &quot;AWS Console&quot; and then on &quot;Open AWS console&quot;. that should open up the AWS console , and you should be good to start the workshop !
 
 
-
-2. Please enter the Event Hash that will be provided .
-
-
-3. Choose &quot;Email One-Time Password (OTP&quot;)&quot;
-
-
-4. Enter your email address
-
-
-5. You should receive an email with your one time password , copy the password and paste it in the right location .
-
-Once done you should see the following page :
-
-![](https://github.com/gubaruch/TLC303_reinvent2021/blob/main/doc/image(5).png)
-
-
-6. Click on &quot;AWS Console&quot; and then on &quot;Open AWS console&quot;. that should open up the AWS console , and you should be good to start the workshop !
-
-
-7. First we will need to start by setting up an IDE which will be used for us to run the datamesh scripts. For that we will use AWS cloud9.
+2. First we will need to start by setting up an IDE which will be used for us to run the datamesh scripts. For that we will use AWS cloud9.
 
 From the search bar, search for cloud9 and click on it .
 
 ![](https://github.com/gubaruch/TLC303_reinvent2021/blob/main/doc/image(6).png)
 
 
-8. Click on **Create Environment**
+3. Click on **Create Environment**
 
 
-9. Choose a name for the environment and click **Next Step**
+4. Choose a name for the environment and click **Next Step**
 
 
-10. Change the instance type to **t3.small**
+5. Change the instance type to **t3.small**
 
 Click on **Next Step**
 
@@ -97,7 +68,7 @@ You can close the 2 tabs on the top of the page and you can grab the terminal ta
 ![](https://github.com/gubaruch/TLC303_reinvent2021/blob/main/doc/image(8).png)
 
 
-11. Now , we would like to clone the source code from the git repository.
+6. Now , we would like to clone the source code from the git repository.
 
 In the terminal window:
 
@@ -108,19 +79,19 @@ write :`git clone https://github.com/gubaruch/Data-mesh-util.git`
 This command will donwload the source code to your cloud9 environment.
 
 
-12. Select the location for the repo, and now you should see the source code in your local cloud9 environment.
+7. Select the location for the repo, and now you should see the source code in your local cloud9 environment.
 
 ![](https://github.com/gubaruch/TLC303_reinvent2021/blob/main/doc/image24.PNG)
 
 
-13. Go to the terminal , make sure you are in the data-mesh util directory . run  the following command :
+8. Go to the terminal , make sure you are in the data-mesh util directory . run  the following command :
 
 `pip3 install -r requirements.txt`
 
 
-14. That will install the relevant packages required to run the data mesh util.
+9. That will install the relevant packages required to run the data mesh util.
 
-15. Each step requires the configuration of a CredentialsFile environment variable, which is a JSON document on your filesystem that provides access to the Accounts to be used. this file is located in the following path :/Data-mesh-util/test/sample-test-creds.json
+10. Each step requires the configuration of a CredentialsFile environment variable, which is a JSON document on your filesystem that provides access to the Accounts to be used. this file is located in the following path :/Data-mesh-util/test/sample-test-creds.json
 
 This file allows for the configuration of multiple accounts, for the Data Mesh, and then a &quot;normal&quot; user and Administration user for both the producer and consumer. Please note that the keys of this document are reserved and cannot be changed or extended (Mesh, Producer, ProducerAdmin, Consumer, and ConsumerAdmin are all reserved words).
 
@@ -167,7 +138,7 @@ m. Please save those in a notepad , and share those with the mesh account owner 
 
 
 
-16. Now go to the search bar and search for **Lakeformation**.
+11. Now go to the search bar and search for **Lakeformation**.
 
 We will now provide datalake admin rights to the user we have just created .
 
@@ -184,7 +155,7 @@ Once done you should see that the IAM user now is a Data lake administrator:
 ![](https://github.com/gubaruch/TLC303_reinvent2021/blob/main/doc/image(15).png)
 
 
-17. On the mesh account , in cloud9 , open the  **/Data-mesh-util/test/sample-test-creds.json** file
+12. On the mesh account , in cloud9 , open the  **/Data-mesh-util/test/sample-test-creds.json** file
 
 The Mesh, Producer Admin and Consumer Admin sections are the ones which should be populated .
 
@@ -210,7 +181,7 @@ Enabled Account xxxxxxxxxxxxx assume DataMeshAdminReadOnly
 xxxxxxxxxxx should be your AWS consumer account ID.
 
 
-18. Go to your AWS producer/consumer accounts.
+13. Go to your AWS producer/consumer accounts.
 
 Go to IAM, you should see a DataMeshProducer user on the producer account and a DataMeshConsumer user in the consumer account.
 
@@ -227,7 +198,7 @@ The mesh account owner can now populate the producer and consumer account and cr
 Once done you should now have the credentials file fully populated .
 
 
-19. Next step is to download the 3 datasets that we will be using for our telecom use cases.
+14. Next step is to download the 3 datasets that we will be using for our telecom use cases.
 
 We would need to :
 
@@ -270,7 +241,7 @@ Verify that directory structure looks as per the below :
 <img width="553" alt="image" src="https://user-images.githubusercontent.com/94520103/144072361-81e77366-e57e-4217-90a1-ea2e9f7ab49f.png">
 
 
-20. Run the AWS Glue crawler to discover the schemas and build a glue catalog:
+15. Run the AWS Glue crawler to discover the schemas and build a glue catalog:
 
 In the search bar type glue and select **AWS Glue**
 
@@ -313,7 +284,7 @@ If you go now to to **Tables** under **Databases** and the **Data  Catalog ,** y
 
 Once that is done , we have products ready on the producer side that can be shared with the central/Hash account
 
-21. Go to the mash account .
+16. Go to the mash account .
 
 On the mesh account, navigate to the folder `/environment/Data-mesh-util/test/reinvent` on the command line
 
@@ -335,7 +306,7 @@ Once done , you can go to the mesh account , and validate you a database and tab
 
 Now that we have central catalog in place , we can run proceed to the next step.
 
-22. In this step the consumer will request access to the data products in the catalog , he will do that by a subscription model
+17. In this step the consumer will request access to the data products in the catalog , he will do that by a subscription model
 
 Asking for specific tables/databases and what type of premissions are required.
 
@@ -351,7 +322,7 @@ Run the following command:
 
 The subscription will be stored in a dynamodb table.
 
-23. You can now run  step 2_5_list_pending_access_requests.py using the following command:
+18. You can now run  step 2_5_list_pending_access_requests.py using the following command:
 
 `python 2_5_list_pending_access_requests.py`
 
@@ -363,7 +334,7 @@ Here is an example of the output of this step :
 
 now , we are ready for the next step , granting data product access.
 
-24. For running the data prdouct access script you need to provide the following arguments are required: --subscription_id, --grant_permissions, --approval_notes.
+19. For running the data prdouct access script you need to provide the following arguments are required: --subscription_id, --grant_permissions, --approval_notes.
 
 The subscription id can be retrieved from the output of step 2_5_list_pending_access_requests , for grant premissions we will provide SELECT premissions .
 
@@ -375,7 +346,7 @@ Run the following command (use the subscription id that was retrieved in the pre
 
 Once completed , the mesh account provided access to the consumer for the data products.
 
-25. Next we will run the final step in which the consumer will approve the resource sharing.
+20. Next we will run the final step in which the consumer will approve the resource sharing.
 
 Run the following command (use the subscription id that was retrieved in the step before the previous one)
 
