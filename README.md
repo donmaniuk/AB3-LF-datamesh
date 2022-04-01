@@ -236,10 +236,6 @@ create a directory named *workshop*
 
 move all the sub directories to that *workshop* folder.
 
-Verify that directory structure looks as per the below :
-
-<img width="553" alt="image" src="https://user-images.githubusercontent.com/94520103/144072361-81e77366-e57e-4217-90a1-ea2e9f7ab49f.png">
-
 
 15. Run the AWS Glue crawler to discover the schemas and build a glue catalog:
 
@@ -280,7 +276,7 @@ The Glue crawler will run for approximately one mintue , and will discover the 3
 
 If you go now to to **Tables** under **Databases** and the **Data  Catalog ,** you will see 3 tables that were created by the crawler you can click on each one of them and explore the schema ** **
 
-![](https://github.com/gubaruch/TLC303_reinvent2021/blob/main/doc/image(19).png)
+![]
 
 Once that is done , we have products ready on the producer side that can be shared with the central/Hash account
 
@@ -302,7 +298,7 @@ The script will start running and executing the relevant tasks.
 
 Once done , you can go to the mesh account , and validate you a database and tables were created in the central catalog :
 
-![](https://github.com/gubaruch/TLC303_reinvent2021/blob/main/doc/image(20).png)
+![]
 
 Now that we have central catalog in place , we can run proceed to the next step.
 
@@ -360,6 +356,6 @@ The other one is a resource link created and owned by the consumer account .  th
 
 ![](https://github.com/gubaruch/TLC303_reinvent2021/blob/main/doc/image(22).png)
 
-**Congratulations!! you have now setup the datamesh architecture across the Producer, Consumer and Central governance account. You are now ready to progress to the use cases section of the workshop. Follow the link below**
+**Congratulations!! you have now setup the datamesh architecture across the Producer, Consumer and Central governance account. You are now ready to progress to preparing the data. **
 
-https://github.com/ajayravindranathan/tlc303
+
